@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nav_bloc_app_tdc/bloc/counter_cubit/counter_cubit.dart';
 import 'package:nav_bloc_app_tdc/bloc/counter_cubit/counter_state.dart';
+import 'package:nav_bloc_app_tdc/core/router/app_router.dart';
 import 'package:nav_bloc_app_tdc/ui/pages/other_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -41,16 +43,16 @@ class HomePage extends StatelessWidget {
               FloatingActionButton(
                 child: const Icon(Icons.ac_unit_rounded),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return OtherPage(
-                          counter: state.counter,
-                        );
-                      },
-                    ),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) {
+                  //       return OtherPage();
+                  //     },
+                  //   ),
+                  // );
+
+                  context.goNamed(AppRoutes.other.name);
                 },
               ),
               const SizedBox(width: 50),
