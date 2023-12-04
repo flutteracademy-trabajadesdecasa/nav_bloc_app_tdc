@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nav_bloc_app_tdc/bloc/counter_cubit/counter_cubit.dart';
 import 'package:nav_bloc_app_tdc/bloc/counter_cubit/counter_state.dart';
+import 'package:nav_bloc_app_tdc/core/locator.dart/locator.dart';
 
 class OtherPage extends StatelessWidget {
   const OtherPage({
@@ -12,6 +13,7 @@ class OtherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CounterCubit, CounterState>(
+      bloc: localizacionBlocs<CounterCubit>(),
       builder: (context, state) {
         return Scaffold(
           floatingActionButton: Row(
@@ -27,7 +29,8 @@ class OtherPage extends StatelessWidget {
                 heroTag: 'incrementar',
                 child: const Icon(Icons.plus_one),
                 onPressed: () {
-                  BlocProvider.of<CounterCubit>(context).incrementar();
+                  // BlocProvider.of<CounterCubit>(context).incrementar();
+                  localizacionBlocs<CounterCubit>().incrementar();
                 },
               ),
             ],
@@ -35,7 +38,7 @@ class OtherPage extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             leading: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.amber,
               ),
