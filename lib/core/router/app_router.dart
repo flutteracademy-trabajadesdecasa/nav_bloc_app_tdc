@@ -19,11 +19,35 @@ final navegacion = GoRouter(
       },
       routes: [
         GoRoute(
-          path: 'other',
-          name: AppRoutes.other.name,
+            path: 'other',
+            name: AppRoutes.other.name,
+            builder: (context, state) {
+              return const OtherPage();
+            },
+            routes: [
+              GoRoute(
+                  path: 'soyUnHijodeOther',
+                  name: 'soyUnHijodeOther',
+                  builder: (context, state) {
+                    return const OtherPage();
+                  },
+                  routes: []),
+            ]),
+        GoRoute(
+          path: 'otherAlMismoLvl',
+          name: 'otherAlMismoLvl',
           builder: (context, state) {
             return const OtherPage();
           },
+          routes: [
+            GoRoute(
+              path: 'masRutas',
+              name: 'masRutas',
+              builder: (context, state) {
+                return const OtherPage();
+              },
+            ),
+          ],
         ),
         // GoRoute(
         //   path: '/',
